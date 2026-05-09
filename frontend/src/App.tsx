@@ -1,17 +1,22 @@
-import login from './components/login'
-import './App.css'
-import expenselist from './components/expenselist'
-import incomelist from './components/incomelist'
-import goallist from './components/goallist'
+import Login from "./components/login";
+import ExpenseList from "./components/expenselist";
+import IncomeList from "./components/incomelist";
+import GoalList from "./components/goallist";
+
+import "./App.css";
 
 function App() {
-
-
   return (
     <>
-      
+      <Login />
+
+      <IncomeList />
+
+      <ExpenseList />
+
+      <GoalList />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
