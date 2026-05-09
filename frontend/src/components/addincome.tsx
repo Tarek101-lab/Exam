@@ -1,6 +1,6 @@
 import { useIncomeStore } from "./store/incomestore";
 
-function Addpatient() {
+function Addincome() {
   const {
     isModalOpen,
     setIsModalOpen,
@@ -78,4 +78,4 @@ function Addpatient() {
   );
 }
 
-export default Addpatient;
+export default Addincome;

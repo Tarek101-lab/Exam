@@ -1,73 +1,72 @@
-import {useEffect} from 'react'
-import { useGoalStore } from './store/goalstore';
-
+import { useEffect } from "react";
+import { useGoalStore } from "./store/goalstore";
+import AddGoal from "./addgoal";
 function goallist() {
-  const {goal,
-      setSearch,
-      getGoal,
-      loadGoal,
-      deleteGoal,
-      fetchGoal, } = useGoalStore();
-      useEffect(() => {
-      fetchGoal();
-    }, []);
-    return (
-       <>
-        <div className="flex gap-2">
-          <input
-            type="text"
-            className="p-2 border rounded-md w-64"
-            placeholder="Search Patient"
-            onChange={(e) => setSearch(e.target.value)}
-          />
-          <button
-            className="bg-sky-400 hover:bg-sky-600 text-white px-4 py-2 rounded-md cursor-pointer"
-            onClick={getGoal}
-          >
-            Search
-          </button>
-        </div>
-        <h1>Goal List</h1>
-        <div className="flex justify-center px-4">
-          <div className="w-full max-w-6xl overflow-x-auto">
-            <h2 className="mb-4 font-bold text-xl">Appointment List</h2>
-  
-            <table className="w-full border-collapse shadow-lg bg-white overflow-hidden">
-              <thead>
-                <tr className="bg-gray-200 text-left">
-                  <th className="border p-4">Name</th>
-                  <th className="border p-4">Amount</th>
-                  <th className="border p-4">Actions</th>
+  const { goal, setSearch, getGoal, loadGoal, deleteGoal, fetchGoal } =
+    useGoalStore();
+  useEffect(() => {
+    fetchGoal();
+  }, [fetchGoal]);
+  return (
+    <>
+      <div className="flex gap-2">
+        <input
+          type="text"
+          className="p-2 border rounded-md w-64"
+          placeholder="Search Patient"
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <button
+          className="bg-sky-400 hover:bg-sky-600 text-white px-4 py-2 rounded-md cursor-pointer"
+          onClick={getGoal}
+        >
+          Search
+        </button>
+        <AddGoal />
+      </div>
+      <h1>Goal List</h1>
+      <div className="flex justify-center px-4">
+        <div className="w-full max-w-6xl overflow-x-auto">
+          <h2 className="mb-4 font-bold text-xl">Appointment List</h2>
+
+          <table className="w-full border-collapse shadow-lg bg-white overflow-hidden">
+            <thead>
+              <tr className="bg-gray-200 text-left">
+                <th className="border p-4">Name</th>
+                <th className="border p-4">Amount</th>
+                <th className="border p-4">Actions</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {goal.map((e) => (
+                <tr key={e._id} className="hover:bg-gray-50">
+                  <td className="border p-4">{e.name}</td>
+                  <td className="border p-4">{e.amount}</td>
+                  <td className="border p-4">
+                    <div className="flex gap-3">
+                      <button
+                        onClick={() => loadGoal(e)}
+                        className="cursor-pointer bg-blue-500 px-3 py-1 rounded text-white"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        onClick={() => deleteGoal(e._id)}
+                        className="cursor-pointer bg-red-500 px-3 py-1 rounded text-white"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </td>
                 </tr>
-              </thead>
-  
-              <tbody>
-                {goal.map((e: any) => (
-                  <tr key={e._id} className="hover:bg-gray-50">
-                    <td className="border p-4">{e.name}</td>
-                    <td className="border p-4">{e.amount}</td>
-  
-                    <td className="border p-4">
-                      <div className="flex gap-3 ">
-                        <button
-                          onClick={() => loadGoal(e)}
-                          className="cursor-pointer bg-blue-500"
-                        ></button>
-  
-                        <button
-                          onClick={() => deleteGoal(e._id)}
-                          className="cursor-pointer bg-red-500"
-                        ></button>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+              ))}
+            </tbody>
+          </table>
         </div>
-      </>
-    )
+      </div>
+    </>
+  );
 }
 
-export default goallist
+export default goallist;

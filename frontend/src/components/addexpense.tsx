@@ -1,6 +1,6 @@
 import { useExpenseStore } from "./store/expensestor";
 
-function Addpatient() {
+function Addexpense() {
   const {
     isModalOpen,
     setIsModalOpen,
@@ -78,4 +78,4 @@ function Addpatient() {
   );
 }
 
-export default Addpatient;
+export default Addexpense;

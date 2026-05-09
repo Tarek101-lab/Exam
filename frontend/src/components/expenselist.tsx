@@ -1,6 +1,6 @@
 import {useEffect} from 'react'
 import { useExpenseStore } from './store/expensestor'
-
+import Addexpense from './addexpense';
 function expenselist() {
 
     const {expense,
@@ -27,6 +27,7 @@ function expenselist() {
         >
           Search
         </button>
+        <Addexpense/>
       </div>
       <h1>Expense List</h1>
       <div className="flex justify-center px-4">

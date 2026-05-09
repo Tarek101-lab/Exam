@@ -1,6 +1,6 @@
 import { useGoalStore } from "./store/goalstore";
 
-function Addpatient() {
+function AddGoal() {
   const {
     isModalOpen,
     setIsModalOpen,
@@ -78,4 +78,4 @@ function Addpatient() {
   );
 }
 
-export default Addpatient;
+export default AddGoal;
