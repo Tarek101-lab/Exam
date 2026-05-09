@@ -1,0 +1,18 @@
+# Dependency directories
+node_modules/
+front-end/node_modules/
+back-end/node_modules/
+
+# Build artifacts
+dist/
+build/
+front-end/build/
+
+# Environment variables (Crucial for security!)
+.env
+.env.local
+back-end/.env
+
+# Logs and OS files
+*.log
+.DS_Store
